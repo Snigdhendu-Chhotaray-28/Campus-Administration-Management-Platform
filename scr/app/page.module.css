@@ -1,0 +1,39 @@
+.hero {
+  position: relative;
+  padding: 8rem 1.5rem;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(79, 70, 229, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background: radial-gradient(circle at center, rgba(79, 70, 229, 0.15) 0%, rgba(11, 15, 25, 0) 70%);
+  }
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.iconWrapper {
+  display: inline-flex;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  background: rgba(79, 70, 229, 0.1);
+  margin-bottom: 1.5rem;
+}
