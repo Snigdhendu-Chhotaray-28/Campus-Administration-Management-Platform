@@ -1,44 +1,36 @@
-# CAMP — Campus Administration & Management Platform
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-CAMP (Campus Administration & Management Platform) is a modern, scalable, full-stack college web platform. It unifies public institutional web pages, role-based user management, interactive student/faculty dashboards, real-time notice publication, and automated online fee collection into a single, cohesive system.
+## Getting Started
 
----
+First, run the development server:
 
-## 🚀 Key Features
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-* **Public Web Portal:** SSR/SSG-optimized landing pages showcasing academic programs, departments, events, and admissions.
-* **Role-Based Authentication & Access Control (RBAC):** Secure access levels for Students, Faculty, and System Administrators using JWT and encrypted passwords.
-* **Interactive Dashboards:**
-  * **Students:** View grades, track attendance, check timetable, and view transaction history.
-  * **Faculty:** Mark attendance, upload marks, publish course materials, and manage student rosters.
-* **Notice & Announcement System:** Real-time bulletin board supporting PDF attachments, tags, department-specific filters, and search.
-* **Secure Payment Gateway:** Seamless online fee payment (tuition, hostel, exams) integrated with automated invoice generation and webhooks for transaction tracking.
-* **Centralized Admin Panel:** Manage users, update site content, manage fee structures, and view administrative audit logs.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## 🛠️ Architecture & Tech Stack
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-* **Frontend:** Next.js / React.js, Tailwind CSS
-* **Backend:** Node.js (Express) / Python (Django/FastAPI)
-* **Database:** PostgreSQL (Relational Data), Redis (Caching & Sessions)
-* **Storage:** AWS S3 / Cloudinary (Document & Media Storage)
-* **Payment Integration:** Razorpay / Stripe SDKs with Webhook processing
+## Learn More
 
----
+To learn more about Next.js, take a look at the following resources:
 
-## ⚙️ Getting Started
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### Prerequisites
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-Ensure you have the following installed on your local machine:
-* Node.js (v18+ recommended)
-* PostgreSQL
-* Git
+## Deploy on Vercel
 
-### Installation
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/your-username/CAMP.git](https://github.com/your-username/CAMP.git)
-   cd CAMP
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
