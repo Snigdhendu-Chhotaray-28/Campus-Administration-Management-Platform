@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  STUDENT
+  FACULTY
+  ADMIN
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(STUDENT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  notices     Notice[]
+  enrollments Enrollment[]
+  payments    Payment[]
+  gradesGiven Grade[]      @relation("Grader")
+  grades      Grade[]      @relation("StudentGrade")
+}
+
+model Notice {
+  id          String   @id @default(uuid())
+  title       String
+  content     String
+  category    String
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Course {
+  id          String   @id @default(uuid())
+  code        String   @unique
+  name        String
+  description String
+  credits     Int
+  
+  enrollments Enrollment[]
+  grades      Grade[]
+}
+
+model Enrollment {
+  id        String   @id @default(uuid())
+  studentId String
+  courseId  String
+  
+  student   User     @relation(fields: [studentId], references: [id])
+  course    Course   @relation(fields: [courseId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([studentId, courseId])
+}
+
+model Payment {
+  id            String   @id @default(uuid())
+  studentId     String
+  amount        Float
+  status        String   // PENDING, SUCCESS, FAILED
+  transactionId String?
+  purpose       String   // TUITION, ADMISSION, EXAM
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  student       User     @relation(fields: [studentId], references: [id])
+}
+
+model Grade {
+  id        String   @id @default(uuid())
+  studentId String
+  courseId  String
+  graderId  String
+  marks     Float
+  grade     String   // A, B, C, D, F
+  
+  student   User     @relation("StudentGrade", fields: [studentId], references: [id])
+  course    Course   @relation(fields: [courseId], references: [id])
+  grader    User     @relation("Grader", fields: [graderId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
